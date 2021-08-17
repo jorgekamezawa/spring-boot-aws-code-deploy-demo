@@ -4,23 +4,15 @@ run-as: ec2-user
 
 phases:
   install:
-    run-as: ec2-user
-    on-failure: ABORT
     runtime-versions:
       java: corretto11
   pre_build:
-    run-as: ec2-user
-    on-failure: ABORT
     commands:
       - ./gradlew bootJar
   build:
-    run-as: ec2-user
-    on-failure: ABORT
     commands:
-      - ./gradlew bootJar
+      - ./gradle bootJar
   post_build:
-    run-as: ec2-user
-    on-failure: ABORT
     commands:
       - echo Build completed
 artifacts:
